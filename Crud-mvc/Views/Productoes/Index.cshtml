@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Crud_mvc.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Productos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-info">Agregar</a>
+</p>
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>
+                Nombre Producto
+            </th>
+            <th>
+                Fecha Ingreso
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                Gestionar
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.IdProducto">Editar</a> |
+                <a asp-action="Details" class="btn btn-warning" asp-route-id="@item.IdProducto">Detalle</a> |
+                <a asp-action="Delete" class="btn btn-dark" asp-route-id="@item.IdProducto">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
